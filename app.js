@@ -9,13 +9,21 @@ let app = express();
 
 app.use(express.json());
 
-//* autorizare accesare backend din portul 5173 *//
+// //* autorizare accesare backend din portul 5173 *//
+// app.use(cors({
+//   origin: "http://localhost:5173",
+//   credentials: true,
+// //   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+// //   allowedHeaders: ["Content-Type", "Authorization"]
+// }));
+
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "*",
   credentials: true,
 //   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
 //   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
 
 //* creare si utilizare folder pentru upload imagini  *//
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
